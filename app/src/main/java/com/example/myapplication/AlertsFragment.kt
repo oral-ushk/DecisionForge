@@ -31,7 +31,7 @@ class AlertsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Обязательно зануляем, чтобы не было утечек памяти
+        // Обязательно зануляем, чтобы не было утечек памятиdfgdfg
         _binding = null
     }
 }
