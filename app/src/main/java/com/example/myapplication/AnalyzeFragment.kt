@@ -24,7 +24,23 @@ class AnalyzeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Здесь в будущем можно будет анимировать заполнение ProgressBar (графика)
+        val sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
+// 2. Подписываемся на обновления данных
+        sharedViewModel.appData.observe(viewLifecycleOwner) { data ->
+            // Этот блок кода будет срабатывать КАЖДЫЙ РАЗ, когда данные меняются!
+
+            // Обновляем текст в зеленых/синих карточках
+            binding.tvEfficiencyValue.text = data.efficiencyGrowth
+            binding.tvSavingsValue.text = data.savingsAmount
+
+            // Обновляем данные для графика рисков
+            val lowRiskText = "${data.risks.lowRisk}%"
+            // binding.tvLowRiskValue.text = lowRiskText (и так далее для остальных)
+
+            // Здесь же мы передаем список data.efficiencyChartPoints в библиотеку MPAndroidChart
+            // updateChart(data.efficiencyChartPoints)
+        }
     }
 
 

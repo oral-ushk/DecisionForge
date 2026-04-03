@@ -18,7 +18,7 @@
             android:background="#8B00FF" android:paddingStart="24dp"
             android:paddingTop="32dp"
             android:paddingEnd="24dp"
-            android:paddingBottom="48dp">
+            android:paddingBottom="80dp">
 
             <TextView
                 android:id="@+id/tvAnalyzeTitle"
@@ -50,6 +50,7 @@
             android:paddingHorizontal="16dp"
             android:weightSum="2">
 
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -68,6 +69,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvEfficiencyValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -103,6 +105,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvSavingsValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -132,7 +135,7 @@
             app:strokeColor="#EAEAEA"
             app:strokeWidth="1dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp">
