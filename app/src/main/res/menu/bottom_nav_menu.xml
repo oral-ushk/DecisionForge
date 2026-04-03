@@ -5,9 +5,9 @@
         android:icon="@drawable/ic_launcher_foreground"
         android:title="Dashboard" />
     <item
-        android:id="@+id/analyticsFragment"
+        android:id="@+id/analyzeFragment"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Analytics" />
+        android:title="Analyze" />
     <item
         android:id="@+id/insightsFragment"
         android:icon="@drawable/ic_insight"

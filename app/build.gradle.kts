@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -9,9 +11,10 @@ android {
         version = release(36) {
             minorApiLevel = 1
         }
-    buildFeatures {
-        viewBinding = true
-    }
+        buildFeatures {
+            viewBinding = true
+        }
+
     }
 
     defaultConfig {
@@ -40,8 +43,23 @@ android {
     buildFeatures {
         compose = true
     }
-}
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true // <-- Добавь эту строчку
+    }
 
+    // Читаем ключ из local.properties
+    val properties = Properties()
+    properties.load(project.rootProject.file("local.properties").inputStream())
+    val geminiApiKey = properties.getProperty("GEMINI_API_KEY") ?: ""
+
+    defaultConfig {
+        // ... твой старый код (applicationId, minSdk и тд) ...
+
+        // Передаем ключ в код
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
+    }
+}
 dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.9.7")
@@ -62,4 +80,8 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 }

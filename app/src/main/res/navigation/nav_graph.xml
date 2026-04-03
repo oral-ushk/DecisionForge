@@ -6,10 +6,10 @@
     app:startDestination="@id/dashboardFragment">
 
     <fragment
-        android:id="@+id/analyticsFragment"
-        android:name="com.example.myapplication.AnalyticsFragment"
-        android:label="fragment_analytics"
-        tools:layout="@layout/fragment_analytics" />
+        android:id="@+id/analyzeFragment"
+        android:name="com.example.myapplication.AnalyzeFragment"
+        android:label="fragment_analyze"
+        tools:layout="@layout/fragment_analyze" />
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.myapplication.DashboardFragment"

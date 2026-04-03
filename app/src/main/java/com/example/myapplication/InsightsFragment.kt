@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.FragmentInsightsBinding // Проверь правильность импорта
-
+import androidx.lifecycle.lifecycleScope // Добавь в начало файла
+import kotlinx.coroutines.launch // Добавь в начало файла
+import com.google.ai.client.generativeai.GenerativeModel // Добавь в начало файла
 // 1. Модель данных для сообщения
 data class ChatMessage(val text: String, val isFromUser: Boolean)
 
@@ -57,8 +59,7 @@ class ChatAdapter(private val messages: List<ChatMessage>) : RecyclerView.Adapte
     }
 }
 
-// 3. Сам Фрагмент
-class InsightsFragment : Fragment() {
+class InsightsFragment  : Fragment() {
 
     private var _binding: FragmentInsightsBinding? = null
     private val binding get() = _binding!!
@@ -75,33 +76,67 @@ class InsightsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Настраиваем RecyclerView
         chatAdapter = ChatAdapter(messageList)
         binding.rvChat.layoutManager = LinearLayoutManager(requireContext())
         binding.rvChat.adapter = chatAdapter
 
-        // Добавляем стартовое приветствие от ИИ (как на макете)
-        addAiMessage("Привет! Я ваш AI-ассистент Decision Forge. Я могу помочь вам проанализировать решения, дать рекомендации и объяснить данные. Чем могу помочь?")
+        // Стартовое приветствие
+        if (messageList.isEmpty()) {
+            addAiMessage("Привет! Я ваш AI-ассистент Decision Forge. Я могу помочь вам проанализировать решения, дать рекомендации и объяснить данные. Чем могу помочь?")
+        }
 
-        // Логика нажатия на кнопку "Отправить"
+        // Обновленная логика кнопки "Отправить"
         binding.btnSend.setOnClickListener {
             val text = binding.etMessage.text.toString().trim()
             if (text.isNotEmpty()) {
+                sendMessageToBot(text)
+            }
+        }
 
-                // 1. Добавляем сообщение пользователя
-                messageList.add(ChatMessage(text, isFromUser = true))
-                chatAdapter.notifyItemInserted(messageList.size - 1)
+        // Оживляем кнопки-подсказки (Chips)
+        binding.chipSummarize.setOnClickListener { sendMessageToBot("Summarize") }
+        binding.chipAnalyze.setOnClickListener { sendMessageToBot("Analyze") }
+        binding.chipForecast.setOnClickListener { sendMessageToBot("Forecast") }
+    }
 
-                // Прокручиваем список вниз
-                binding.rvChat.scrollToPosition(messageList.size - 1)
+    // Вспомогательная функция для отправки сообщения (чтобы не дублировать код)
+    private fun sendMessageToBot(text: String) {
+        // 1. Показываем сообщение пользователя в чате
+        messageList.add(ChatMessage(text, isFromUser = true))
+        chatAdapter.notifyItemInserted(messageList.size - 1)
+        binding.rvChat.scrollToPosition(messageList.size - 1)
 
-                // Очищаем поле ввода
-                binding.etMessage.text.clear()
+        // Очищаем поле ввода
+        binding.etMessage.text.clear()
 
-                // 2. Имитируем задержку (как будто ИИ думает) и выдаем заглушку
-                Handler(Looper.getMainLooper()).postDelayed({
-                    addAiMessage("Временно не работает")
-                }, 1000) // Задержка 1 секунда
+        // 2. Добавляем "ИИ печатает..." (временное сообщение)
+        val typingIndex = messageList.size
+        messageList.add(ChatMessage("Думаю...", isFromUser = false))
+        chatAdapter.notifyItemInserted(typingIndex)
+        binding.rvChat.scrollToPosition(typingIndex)
+
+        // 3. Отправляем запрос к настоящему ИИ в фоновом потоке (Корутины)
+        lifecycleScope.launch {
+            try {
+                // Инициализируем модель Gemini
+                val generativeModel = GenerativeModel(
+                    modelName = "gemini-2.5-flash",
+                    apiKey = BuildConfig.GEMINI_API_KEY // <-- Теперь ключ берется из секретного места!
+                )
+                // Формируем промпт. Мы говорим ИИ, кто он такой, чтобы он отвечал в стиле приложения.
+                val systemPrompt = "Ты ИИ-ассистент в бизнес-приложении Decision Forge. Отвечай кратко и по делу. Вопрос пользователя: $text"
+
+                // Ждем ответ от сервера
+                val response = generativeModel.generateContent(systemPrompt)
+
+                // 4. Обновляем UI: убираем "Думаю..." и ставим реальный ответ
+                messageList[typingIndex] = ChatMessage(response.text ?: "Не смог сгенерировать ответ", isFromUser = false)
+                chatAdapter.notifyItemChanged(typingIndex)
+
+            } catch (e: Exception) {
+                // Если нет интернета или ошибка ключа
+                messageList[typingIndex] = ChatMessage("Ошибка сети: ${e.message}", isFromUser = false)
+                chatAdapter.notifyItemChanged(typingIndex)
             }
         }
     }
@@ -116,4 +151,5 @@ class InsightsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
