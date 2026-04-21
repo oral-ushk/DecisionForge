@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ваш интеллектуальный помощникl"
+                android:text="Ваш интеллектуальный помощник"
                 android:textColor="#D0D9F6"
                 android:textSize="12sp" />
         </LinearLayout>

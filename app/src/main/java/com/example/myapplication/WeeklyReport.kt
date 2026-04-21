@@ -1,19 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication // Убедись, что тут твой пакет!
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName = "weekly_reports")
+// Это наша структура данных из Excel файла
 data class WeeklyReport(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-
-    val reportDate: String,
-
-    val efficiencyGrowth: Float, // например, 68.0
-    val potentialSavings: Float, // например, 2.4
-
-    val lowRiskPercent: Int,
-    val mediumRiskPercent: Int,
-    val highRiskPercent: Int
+    val dateId: String, // Дата отчета, например "2026-04-21" или "Неделя 16"
+    val efficiencyGrowth: Float, // Рост эффективности (+68%)
+    val potentialSavings: Float, // Экономия (2.4)
+    val lowRiskPercent: Int,     // Низкий риск (33)
+    val mediumRiskPercent: Int,  // Средний риск (50)
+    val highRiskPercent: Int     // Высокий риск (17)
 )

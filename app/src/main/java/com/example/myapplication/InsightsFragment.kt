@@ -1,26 +1,51 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.FragmentInsightsBinding // Проверь правильность импорта
-import androidx.lifecycle.lifecycleScope // Добавь в начало файла
-import kotlinx.coroutines.launch // Добавь в начало файла
-import com.google.ai.client.generativeai.GenerativeModel // Добавь в начало файла
+import com.example.myapplication.databinding.FragmentInsightsBinding
+import com.google.ai.client.generativeai.Chat
+import com.google.ai.client.generativeai.GenerativeModel
+import com.google.ai.client.generativeai.type.content
+import kotlinx.coroutines.launch
+
 // 1. Модель данных для сообщения
 data class ChatMessage(val text: String, val isFromUser: Boolean)
 
-// 2. Адаптер для списка
+// 2. ViewModel: "Мозг", который выживает при переключении вкладок
+class InsightsViewModel : ViewModel() {
+    val messageList = mutableListOf<ChatMessage>()
+    lateinit var chatSession: Chat
+
+    var currentDataContext: String = "Менеджер еще не загрузил данные."
+
+    init {
+        // Инициализируем ИИ один раз при запуске приложения
+        val generativeModel = GenerativeModel(
+            modelName = "gemini-2.5-flash",
+            apiKey = BuildConfig.GEMINI_API_KEY,
+            systemInstruction = content {
+                text("Ты — бизнес-ассистент в приложении Decision Forge. Отвечай кратко, профессионально и по делу. Помогай анализировать графики и риски.")
+            }
+        )
+        chatSession = generativeModel.startChat()
+
+        // Стартовое приветствие добавляется только один раз
+        messageList.add(ChatMessage("Привет! Я ваш AI-ассистент Decision Forge. Я могу помочь вам проанализировать решения, дать рекомендации и объяснить данные. Чем могу помочь?", isFromUser = false))
+    }
+}
+
+// 3. Адаптер для списка
 class ChatAdapter(private val messages: List<ChatMessage>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    // Типы сообщений
     private val VIEW_TYPE_USER = 1
     private val VIEW_TYPE_AI = 2
 
@@ -59,13 +84,14 @@ class ChatAdapter(private val messages: List<ChatMessage>) : RecyclerView.Adapte
     }
 }
 
-class InsightsFragment  : Fragment() {
+// 4. Сам фрагмент
+class InsightsFragment : Fragment() {
 
     private var _binding: FragmentInsightsBinding? = null
     private val binding get() = _binding!!
 
-    // Список сообщений
-    private val messageList = mutableListOf<ChatMessage>()
+    // Ссылка на нашу бессмертную ViewModel
+    private lateinit var viewModel: InsightsViewModel
     private lateinit var chatAdapter: ChatAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -76,16 +102,20 @@ class InsightsFragment  : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        chatAdapter = ChatAdapter(messageList)
+        // Подключаемся к ViewModel, привязанной к Activity (чтобы она не умирала при смене вкладок)
+        viewModel = ViewModelProvider(requireActivity())[InsightsViewModel::class.java]
+
+        // Передаем адаптеру список сообщений из ViewModel
+        chatAdapter = ChatAdapter(viewModel.messageList)
         binding.rvChat.layoutManager = LinearLayoutManager(requireContext())
         binding.rvChat.adapter = chatAdapter
 
-        // Стартовое приветствие
-        if (messageList.isEmpty()) {
-            addAiMessage("Привет! Я ваш AI-ассистент Decision Forge. Я могу помочь вам проанализировать решения, дать рекомендации и объяснить данные. Чем могу помочь?")
+        // Скроллим вниз, если там уже есть история сообщений
+        if (viewModel.messageList.isNotEmpty()) {
+            binding.rvChat.scrollToPosition(viewModel.messageList.size - 1)
         }
 
-        // Обновленная логика кнопки "Отправить"
+        // Логика кнопки "Отправить"
         binding.btnSend.setOnClickListener {
             val text = binding.etMessage.text.toString().trim()
             if (text.isNotEmpty()) {
@@ -93,63 +123,52 @@ class InsightsFragment  : Fragment() {
             }
         }
 
-        // Оживляем кнопки-подсказки (Chips)
-        binding.chipSummarize.setOnClickListener { sendMessageToBot("Summarize") }
-        binding.chipAnalyze.setOnClickListener { sendMessageToBot("Analyze") }
-        binding.chipForecast.setOnClickListener { sendMessageToBot("Forecast") }
+        // Кнопки-подсказки (Chips)
+        binding.chipSummarize.setOnClickListener { sendMessageToBot("Сделай краткую сводку по проекту") }
+        binding.chipAnalyze.setOnClickListener { sendMessageToBot("Проанализируй текущие риски") }
+        binding.chipForecast.setOnClickListener { sendMessageToBot("Какой прогноз на следующий месяц?") }
     }
 
-    // Вспомогательная функция для отправки сообщения (чтобы не дублировать код)
     private fun sendMessageToBot(text: String) {
         // 1. Показываем сообщение пользователя в чате
-        messageList.add(ChatMessage(text, isFromUser = true))
-        chatAdapter.notifyItemInserted(messageList.size - 1)
-        binding.rvChat.scrollToPosition(messageList.size - 1)
+        viewModel.messageList.add(ChatMessage(text, isFromUser = true))
+        chatAdapter.notifyItemInserted(viewModel.messageList.size - 1)
+        binding.rvChat.scrollToPosition(viewModel.messageList.size - 1)
 
         // Очищаем поле ввода
         binding.etMessage.text.clear()
 
-        // 2. Добавляем "ИИ печатает..." (временное сообщение)
-        val typingIndex = messageList.size
-        messageList.add(ChatMessage("Думаю...", isFromUser = false))
+        // 2. Добавляем "Анализирую..." (временное сообщение)
+        val typingIndex = viewModel.messageList.size
+        viewModel.messageList.add(ChatMessage("Анализирую данные...", isFromUser = false))
         chatAdapter.notifyItemInserted(typingIndex)
         binding.rvChat.scrollToPosition(typingIndex)
 
-        // 3. Отправляем запрос к настоящему ИИ в фоновом потоке (Корутины)
-        lifecycleScope.launch {
+        // 3. Отправляем запрос через ИИ-сессию из ViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
             try {
-                // Инициализируем модель Gemini
-                val generativeModel = GenerativeModel(
-                    modelName = "gemini-2.5-flash",
-                    apiKey = BuildConfig.GEMINI_API_KEY // <-- Теперь ключ берется из секретного места!
-                )
-                // Формируем промпт. Мы говорим ИИ, кто он такой, чтобы он отвечал в стиле приложения.
-                val systemPrompt = "Ты ИИ-ассистент в бизнес-приложении Decision Forge. Отвечай кратко и по делу. Вопрос пользователя: $text"
+                val hiddenPrompt = """
+                    ${viewModel.currentDataContext}
+                    
+                    Вопрос пользователя: $text
+                """.trimIndent()
 
-                // Ждем ответ от сервера
-                val response = generativeModel.generateContent(systemPrompt)
+                // Отправляем скрытый промпт нейросети
+                val response = viewModel.chatSession.sendMessage(hiddenPrompt)
 
-                // 4. Обновляем UI: убираем "Думаю..." и ставим реальный ответ
-                messageList[typingIndex] = ChatMessage(response.text ?: "Не смог сгенерировать ответ", isFromUser = false)
+                // 4. Обновляем UI
+                viewModel.messageList[typingIndex] = ChatMessage(response.text ?: "Не смог сгенерировать ответ", isFromUser = false)
                 chatAdapter.notifyItemChanged(typingIndex)
 
             } catch (e: Exception) {
-                // Если нет интернета или ошибка ключа
-                messageList[typingIndex] = ChatMessage("Ошибка сети: ${e.message}", isFromUser = false)
+                viewModel.messageList[typingIndex] = ChatMessage("Ошибка подключения: ${e.localizedMessage}", isFromUser = false)
                 chatAdapter.notifyItemChanged(typingIndex)
             }
         }
-    }
-
-    private fun addAiMessage(text: String) {
-        messageList.add(ChatMessage(text, isFromUser = false))
-        chatAdapter.notifyItemInserted(messageList.size - 1)
-        binding.rvChat.scrollToPosition(messageList.size - 1)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }
