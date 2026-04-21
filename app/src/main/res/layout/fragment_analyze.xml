@@ -13,6 +13,7 @@
         android:padding="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nenuzno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#8B00FF" android:paddingStart="24dp"
