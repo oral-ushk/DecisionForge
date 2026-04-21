@@ -7,24 +7,27 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-        buildFeatures {
-            viewBinding = true
-        }
+    compileSdk = 34
 
+    // Читаем ключ из local.properties
+    val properties = Properties()
+    val localPropertiesFile = project.rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        properties.load(localPropertiesFile.inputStream())
     }
+    val geminiApiKey = properties.getProperty("GEMINI_API_KEY") ?: ""
 
     defaultConfig {
         applicationId = "com.example.myapplication"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Передаем ключ в код
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
     }
 
     buildTypes {
@@ -36,34 +39,26 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildFeatures {
         compose = true
-    }
-    buildFeatures {
         viewBinding = true
-        buildConfig = true // <-- Добавь эту строчку
-    }
-
-    // Читаем ключ из local.properties
-    val properties = Properties()
-    properties.load(project.rootProject.file("local.properties").inputStream())
-    val geminiApiKey = properties.getProperty("GEMINI_API_KEY") ?: ""
-
-    defaultConfig {
-        // ... твой старый код (applicationId, minSdk и тд) ...
-
-        // Передаем ключ в код
-        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
+        buildConfig = true
     }
 }
+
 dependencies {
+    // --- Стандартные библиотеки ---
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.9.7")
     implementation("com.google.android.material:material:1.13.0")
+
+    // --- Compose и Core ---
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -73,6 +68,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
+
+    // --- Тесты ---
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -80,8 +77,10 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // --- Наши добавленные библиотеки ---
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0") // Графики
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0") // Gemini ИИ
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3") // Корутины
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 }
