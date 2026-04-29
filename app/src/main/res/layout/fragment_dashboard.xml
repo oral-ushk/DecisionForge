@@ -527,6 +527,7 @@
             app:icon="@android:drawable/ic_menu_upload"
             app:iconTint="@android:color/white"
             app:backgroundTint="#1976D2"
+            app:layout_constraintTop_toBottomOf="@id/aiActionsCard"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
