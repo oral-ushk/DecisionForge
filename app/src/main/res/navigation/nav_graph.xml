@@ -2,32 +2,70 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/dashboardFragment">
+    android:id="@+id/nav_graph_xml"
+    app:startDestination="@id/loginFragment">
+
+    <!-- LOGIN -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myapplication.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login" />
+
+    <!-- MAIN TABS -->
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.myapplication.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/analyzeFragment"
         android:name="com.example.myapplication.AnalyzeFragment"
         android:label="fragment_analyze"
         tools:layout="@layout/fragment_analyze" />
-    <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="com.example.myapplication.DashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.myapplication.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/alertsFragment"
-        android:name="com.example.myapplication.AlertsFragment"
-        android:label="fragment_alerts"
-        tools:layout="@layout/fragment_alerts" />
+
     <fragment
         android:id="@+id/insightsFragment"
         android:name="com.example.myapplication.InsightsFragment"
         android:label="fragment_insights"
         tools:layout="@layout/fragment_insights" />
+
+    <fragment
+        android:id="@+id/alertsFragment"
+        android:name="com.example.myapplication.AlertsFragment"
+        android:label="fragment_alerts"
+        tools:layout="@layout/fragment_alerts" />
+
+    <!-- PROFILE + SUB-SCREENS -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/personalDetailsFragment"
+        android:name="com.example.myapplication.PersonalDetailsFragment"
+        android:label="Personal Details"
+        tools:layout="@layout/fragment_personal_details" />
+
+    <fragment
+        android:id="@+id/appearanceFragment"
+        android:name="com.example.myapplication.AppearanceFragment"
+        android:label="Appearance"
+        tools:layout="@layout/fragment_appearance" />
+
+    <fragment
+        android:id="@+id/securityFragment"
+        android:name="com.example.myapplication.SecurityFragment"
+        android:label="Security"
+        tools:layout="@layout/fragment_security" />
+
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.example.myapplication.LanguageFragment"
+        android:label="Language"
+        tools:layout="@layout/fragment_language" />
+
 </navigation>

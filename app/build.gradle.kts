@@ -14,7 +14,7 @@ android {
     if (localPropertiesFile.exists()) {
         properties.load(localPropertiesFile.inputStream())
     }
-    val geminiApiKey = properties.getProperty("GEMINI_API_KEY") ?: ""
+    val claudeApiKey = properties.getProperty("CLAUDE_API_KEY") ?: ""
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -23,7 +23,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
+        buildConfigField("String", "CLAUDE_API_KEY", "\"$claudeApiKey\"")
     }
 
     buildTypes {
@@ -61,7 +61,8 @@ dependencies {
     implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
 
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
