@@ -1,84 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFBFC">
+    android:background="#F0F3FA">
 
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#2155D6"
+        android:layout_height="150dp"
+        android:background="@drawable/bg_profile_header"
+        android:gravity="bottom"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="20dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@android:drawable/btn_star_big_on"
-            app:tint="@android:color/white" />
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_avatar_large"
+            android:gravity="center"
+            android:text="★"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AI Copilot"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:letterSpacing="0.12"
+                android:text="AI COPILOT"
+                android:textColor="#90A8E0"
+                android:textSize="11sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ваш интеллектуальный помощник"
-                android:textColor="#D0D9F6"
+                android:layout_marginTop="3dp"
+                android:text="Decision Forge Assistant"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Powered by Claude"
+                android:textColor="#C0CCEE"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/chipsScrollView"
+    <LinearLayout
+        android:id="@+id/chipsCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:paddingVertical="8dp"
-        android:scrollbars="none"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintTop_toBottomOf="@id/headerLayout">
 
-        <LinearLayout
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipSummarize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp">
+            android:text="Summarize"
+            app:chipBackgroundColor="#EEF2FF"
+            app:chipStrokeColor="#C7D2FE"
+            app:chipStrokeWidth="1dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipSummarize" android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Summarize"
-                app:chipIcon="@android:drawable/ic_menu_sort_by_size" />
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAnalyze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Analyze Risks"
+            app:chipBackgroundColor="#EEF2FF"
+            app:chipStrokeColor="#C7D2FE"
+            app:chipStrokeWidth="1dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipAnalyze" android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Analyze"
-                app:chipIcon="@android:drawable/ic_menu_agenda" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipForecast" android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Forecast" />
-        </LinearLayout>
-    </HorizontalScrollView>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipForecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Forecast"
+            app:chipBackgroundColor="#EEF2FF"
+            app:chipStrokeColor="#C7D2FE"
+            app:chipStrokeWidth="1dp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChat"
@@ -87,23 +107,25 @@
         android:clipToPadding="false"
         android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@id/bottomInputLayout"
-        app:layout_constraintTop_toBottomOf="@id/chipsScrollView" />
+        app:layout_constraintTop_toBottomOf="@id/chipsCard" />
 
     <LinearLayout
         android:id="@+id/bottomInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:elevation="8dp"
+        android:elevation="4dp"
         android:orientation="vertical"
-        android:padding="12dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/etMessage"
@@ -111,20 +133,21 @@
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_chat_input"
-                android:hint="Спросите что-нибудь..."
+                android:hint="Ask anything…"
                 android:paddingHorizontal="16dp"
-                android:textColor="#333333"
-                android:textColorHint="#999999"
+                android:textColor="#232D42"
+                android:textColorHint="#B0BBCC"
                 android:textSize="14sp" />
 
             <ImageButton
                 android:id="@+id/btnSend"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_btn_send"
+                android:padding="10dp"
                 android:src="@android:drawable/ic_menu_send"
-                app:tint="#B0BEC5" />
+                app:tint="@android:color/white" />
         </LinearLayout>
 
         <TextView
@@ -132,8 +155,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="AI может допускать ошибки. Проверяйте важную информацию."
-            android:textColor="#A0A0A0"
+            android:text="AI may make mistakes. Verify important info."
+            android:textColor="#B0BBCC"
             android:textSize="10sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
