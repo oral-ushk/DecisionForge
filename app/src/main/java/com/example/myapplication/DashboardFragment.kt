@@ -37,9 +37,18 @@ class DashboardFragment : Fragment() {
             AddEntryDialogFragment().show(childFragmentManager, "add_entry")
         }
 
-        binding.btnActionSummary.setOnClickListener { openAiChat() }
-        binding.btnActionTrends.setOnClickListener { openAiChat() }
-        binding.btnActionAnomalies.setOnClickListener { openAiChat() }
+        binding.btnActionSummary.setOnClickListener {
+            insightsViewModel.pendingQuickAction = "Give me a comprehensive summary of the current business performance based on the dashboard data."
+            openAiChat()
+        }
+        binding.btnActionTrends.setOnClickListener {
+            insightsViewModel.pendingQuickAction = "Analyze the current trends in the dashboard data. What patterns and insights can you identify?"
+            openAiChat()
+        }
+        binding.btnActionAnomalies.setOnClickListener {
+            insightsViewModel.pendingQuickAction = "Are there any anomalies or unusual patterns in the current dashboard data? Please explain what might be causing them."
+            openAiChat()
+        }
 
         sharedViewModel.entries.observe(viewLifecycleOwner) { entries ->
             if (entries.isEmpty()) return@observe
@@ -125,16 +134,17 @@ class DashboardFragment : Fragment() {
         chart.data = LineData(effDs, revDs)
         chart.description.isEnabled = false
         chart.legend.isEnabled = true
-        chart.legend.textColor = Color.parseColor("#8A92A6")
+        val chartTextColor = resources.getColor(R.color.colorOnSurfaceSecondary, requireContext().theme)
+        chart.legend.textColor = chartTextColor
         chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         chart.xAxis.setDrawGridLines(false)
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
         chart.xAxis.granularity = 1f
-        chart.xAxis.textColor = Color.parseColor("#8A92A6")
+        chart.xAxis.textColor = chartTextColor
         chart.xAxis.textSize = 10f
         chart.axisRight.isEnabled = false
-        chart.axisLeft.gridColor = Color.parseColor("#EEEEEE")
-        chart.axisLeft.textColor = Color.parseColor("#8A92A6")
+        chart.axisLeft.gridColor = resources.getColor(R.color.colorSurface, requireContext().theme)
+        chart.axisLeft.textColor = chartTextColor
         chart.invalidate()
         chart.animateX(600)
     }
@@ -158,9 +168,11 @@ class DashboardFragment : Fragment() {
         chart.data = PieData(ds)
         chart.holeRadius = 62f
         chart.transparentCircleRadius = 67f
+        chart.setHoleColor(resources.getColor(R.color.colorSurface, requireContext().theme))
+        chart.setTransparentCircleColor(resources.getColor(R.color.colorSurface, requireContext().theme))
         chart.setDrawEntryLabels(false)
         chart.description.isEnabled = false
-        chart.legend.textColor = Color.parseColor("#8A92A6")
+        chart.legend.textColor = resources.getColor(R.color.colorOnSurfaceSecondary, requireContext().theme)
         chart.notifyDataSetChanged()
         chart.animateY(600)
     }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F3FA">
+    android:background="@color/colorBackground">
 
     <!-- Header -->
     <LinearLayout
@@ -51,7 +51,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="PASSWORD"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -62,7 +62,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Change your account password to keep your data secure."
-                        android:textColor="#8A92A6"
+                        android:textColor="@color/colorOnSurfaceSecondary"
                         android:textSize="13sp"
                         android:layout_marginBottom="16dp"
                         android:lineSpacingExtra="3dp" />
@@ -98,7 +98,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="TWO-FACTOR AUTHENTICATION"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -109,7 +109,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Enable 2FA"
-                                android:textColor="#232D42"
+                                android:textColor="@color/colorOnSurface"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
@@ -142,7 +142,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:text="Add an extra layer of security"
-                                android:textColor="#8A92A6"
+                                android:textColor="@color/colorOnSurfaceSecondary"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -161,7 +161,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="BIOMETRIC"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -172,7 +172,7 @@
                 android:layout_marginBottom="20dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Fingerprint Login"
-                            android:textColor="#232D42"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -200,7 +200,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="Use biometrics to unlock the app"
-                            android:textColor="#8A92A6"
+                            android:textColor="@color/colorOnSurfaceSecondary"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -218,7 +218,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="ACTIVE SESSIONS"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -229,7 +229,7 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -241,7 +241,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sign out all other devices logged into your account."
-                        android:textColor="#8A92A6"
+                        android:textColor="@color/colorOnSurfaceSecondary"
                         android:textSize="13sp"
                         android:layout_marginBottom="16dp"
                         android:lineSpacingExtra="3dp" />
@@ -265,3 +265,4 @@
     </ScrollView>
 
 </LinearLayout>
+

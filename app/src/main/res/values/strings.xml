@@ -1,5 +1,38 @@
 <resources>
     <string name="app_name">DecisionForge</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Dashboard -->
+    <string name="str_dashboard">Dashboard</string>
+    <string name="str_weekly_snapshot">Weekly performance snapshot</string>
+    <string name="str_key_metrics">KEY METRICS</string>
+    <string name="str_charts">CHARTS</string>
+    <string name="str_ai_assistant">AI ASSISTANT</string>
+    <string name="str_copilot_quick_actions">Copilot Quick Actions</string>
+    <string name="str_powered_by_claude">Powered by Claude</string>
+    <string name="str_performance_trend">Performance Trend</string>
+    <string name="str_efficiency_over_weeks">Efficiency over recorded weeks</string>
+    <string name="str_risk_distribution">Risk Distribution</string>
+    <string name="str_latest_week_breakdown">Latest week breakdown</string>
+    <string name="str_get_summary">Get a Summary</string>
+    <string name="str_analyze_trends">Analyze Trends</string>
+    <string name="str_explain_anomalies">Explain Anomalies</string>
+    <string name="str_add_entry">Add Entry</string>
+
+    <!-- KPI Labels -->
+    <string name="str_revenue">Revenue</string>
+    <string name="str_conversion">Conversion</string>
+    <string name="str_retention">Retention</string>
+    <string name="str_forecast_acc">Forecast Acc.</string>
+
+    <!-- Insights / AI Chat -->
+    <string name="str_ai_copilot">AI COPILOT</string>
+    <string name="str_df_assistant">Decision Forge Assistant</string>
+    <string name="str_chip_summarize">Summarize</string>
+    <string name="str_chip_analyze">Analyze Risks</string>
+    <string name="str_chip_forecast">Forecast</string>
+    <string name="str_ask_anything">Ask anything…</string>
+    <string name="str_ai_disclaimer">AI may make mistakes. Verify important info.</string>
+
+    <string name="str_apply_theme">Apply Theme</string>
+    <string name="str_apply_language">Apply Language</string>
 </resources>

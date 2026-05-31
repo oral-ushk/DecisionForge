@@ -44,8 +44,16 @@ class LoginFragment : Fragment() {
                     navigateToApp()
                 }
             } catch (e: ApiException) {
-                showError("Google sign-in failed. Please try again.")
+                val msg = when (e.statusCode) {
+                    10 -> "Sign-in configuration error. Please contact support. (code 10)"
+                    7  -> "Network error. Check your internet connection."
+                    12501 -> "" // user cancelled — silently ignore
+                    else -> "Google sign-in failed (code ${e.statusCode}). Please try again."
+                }
+                if (msg.isNotEmpty()) showError(msg)
             }
+        } else if (result.resultCode != Activity.RESULT_CANCELED) {
+            showError("Sign-in failed. Please try again.")
         }
     }
 
@@ -79,7 +87,9 @@ class LoginFragment : Fragment() {
             .requestProfile()
             .build()
         val client = GoogleSignIn.getClient(requireActivity(), gso)
-        googleSignInLauncher.launch(client.signInIntent)
+        client.signOut().addOnCompleteListener {
+            googleSignInLauncher.launch(client.signInIntent)
+        }
     }
 
     private fun continueAsGuest() {

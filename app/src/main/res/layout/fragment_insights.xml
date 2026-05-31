@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F3FA">
+    android:background="@color/colorBackground">
 
     <LinearLayout
         android:id="@+id/headerLayout"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:letterSpacing="0.12"
-                android:text="AI COPILOT"
+                android:text="@string/str_ai_copilot"
                 android:textColor="#90A8E0"
                 android:textSize="11sp"
                 android:textStyle="bold" />
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="Decision Forge Assistant"
+                android:text="@string/str_df_assistant"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Powered by Claude"
+                android:text="@string/str_powered_by_claude"
                 android:textColor="#C0CCEE"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -64,7 +64,7 @@
         android:id="@+id/chipsCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="@color/colorSurface"
         android:paddingHorizontal="16dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -74,9 +74,9 @@
             android:id="@+id/chipSummarize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Summarize"
-            app:chipBackgroundColor="#EEF2FF"
-            app:chipStrokeColor="#C7D2FE"
+            android:text="@string/str_chip_summarize"
+            app:chipBackgroundColor="@color/colorChipBackground"
+            app:chipStrokeColor="@color/colorChipStroke"
             app:chipStrokeWidth="1dp" />
 
         <com.google.android.material.chip.Chip
@@ -84,9 +84,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Analyze Risks"
-            app:chipBackgroundColor="#EEF2FF"
-            app:chipStrokeColor="#C7D2FE"
+            android:text="@string/str_chip_analyze"
+            app:chipBackgroundColor="@color/colorChipBackground"
+            app:chipStrokeColor="@color/colorChipStroke"
             app:chipStrokeWidth="1dp" />
 
         <com.google.android.material.chip.Chip
@@ -94,9 +94,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Forecast"
-            app:chipBackgroundColor="#EEF2FF"
-            app:chipStrokeColor="#C7D2FE"
+            android:text="@string/str_chip_forecast"
+            app:chipBackgroundColor="@color/colorChipBackground"
+            app:chipStrokeColor="@color/colorChipStroke"
             app:chipStrokeWidth="1dp" />
     </LinearLayout>
 
@@ -113,7 +113,7 @@
         android:id="@+id/bottomInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="@color/colorSurface"
         android:elevation="4dp"
         android:orientation="vertical"
         android:paddingHorizontal="16dp"
@@ -133,10 +133,10 @@
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_chat_input"
-                android:hint="Ask anything…"
+                android:hint="@string/str_ask_anything"
                 android:paddingHorizontal="16dp"
-                android:textColor="#232D42"
-                android:textColorHint="#B0BBCC"
+                android:textColor="@color/colorOnSurface"
+                android:textColorHint="@color/colorOnSurfaceSecondary"
                 android:textSize="14sp" />
 
             <ImageButton
@@ -155,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="AI may make mistakes. Verify important info."
+            android:text="@string/str_ai_disclaimer"
             android:textColor="#B0BBCC"
             android:textSize="10sp" />
     </LinearLayout>

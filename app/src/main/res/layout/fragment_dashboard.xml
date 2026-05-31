@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F3FA">
+    android:background="@color/colorBackground">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Dashboard"
+                    android:text="@string/str_dashboard"
                     android:textColor="@android:color/white"
                     android:textSize="28sp"
                     android:textStyle="bold" />
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
-                    android:text="Weekly performance snapshot"
+                    android:text="@string/str_weekly_snapshot"
                     android:textColor="#C0CCEE"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -63,8 +63,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginBottom="8dp"
                     android:letterSpacing="0.12"
-                    android:text="KEY METRICS"
-                    android:textColor="#8A92A6"
+                    android:text="@string/str_key_metrics"
+                    android:textColor="@color/colorOnSurfaceSecondary"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
                         android:layout_margin="5dp"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        app:cardBackgroundColor="#FFFFFF">
+                        app:cardBackgroundColor="@color/colorSurface">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -101,8 +101,8 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Revenue"
-                                    android:textColor="#8A92A6"
+                                    android:text="@string/str_revenue"
+                                    android:textColor="@color/colorOnSurfaceSecondary"
                                     android:textSize="12sp" />
 
                                 <TextView
@@ -122,7 +122,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="78%"
-                                android:textColor="#232D42"
+                                android:textColor="@color/colorOnSurface"
                                 android:textSize="26sp"
                                 android:textStyle="bold" />
 
@@ -145,7 +145,7 @@
                         android:layout_margin="5dp"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        app:cardBackgroundColor="#FFFFFF">
+                        app:cardBackgroundColor="@color/colorSurface">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -163,8 +163,8 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Conversion"
-                                    android:textColor="#8A92A6"
+                                    android:text="@string/str_conversion"
+                                    android:textColor="@color/colorOnSurfaceSecondary"
                                     android:textSize="12sp" />
 
                                 <TextView
@@ -184,7 +184,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="33%"
-                                android:textColor="#232D42"
+                                android:textColor="@color/colorOnSurface"
                                 android:textSize="26sp"
                                 android:textStyle="bold" />
 
@@ -207,7 +207,7 @@
                         android:layout_margin="5dp"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        app:cardBackgroundColor="#FFFFFF">
+                        app:cardBackgroundColor="@color/colorSurface">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -225,8 +225,8 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Retention"
-                                    android:textColor="#8A92A6"
+                                    android:text="@string/str_retention"
+                                    android:textColor="@color/colorOnSurfaceSecondary"
                                     android:textSize="12sp" />
 
                                 <TextView
@@ -246,7 +246,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="48%"
-                                android:textColor="#232D42"
+                                android:textColor="@color/colorOnSurface"
                                 android:textSize="26sp"
                                 android:textStyle="bold" />
 
@@ -269,7 +269,7 @@
                         android:layout_margin="5dp"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        app:cardBackgroundColor="#FFFFFF">
+                        app:cardBackgroundColor="@color/colorSurface">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -287,8 +287,8 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Forecast Acc."
-                                    android:textColor="#8A92A6"
+                                    android:text="@string/str_forecast_acc"
+                                    android:textColor="@color/colorOnSurfaceSecondary"
                                     android:textSize="12sp" />
 
                                 <TextView
@@ -308,7 +308,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:text="75%"
-                                android:textColor="#232D42"
+                                android:textColor="@color/colorOnSurface"
                                 android:textSize="26sp"
                                 android:textStyle="bold" />
 
@@ -332,8 +332,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginBottom="8dp"
                     android:letterSpacing="0.12"
-                    android:text="CHARTS"
-                    android:textColor="#8A92A6"
+                    android:text="@string/str_charts"
+                    android:textColor="@color/colorOnSurfaceSecondary"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -344,7 +344,7 @@
                     android:layout_marginBottom="12dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    app:cardBackgroundColor="@color/colorSurface">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -355,8 +355,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Performance Trend"
-                            android:textColor="#232D42"
+                            android:text="@string/str_performance_trend"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -364,8 +364,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Efficiency over recorded weeks"
-                            android:textColor="#8A92A6"
+                            android:text="@string/str_efficiency_over_weeks"
+                            android:textColor="@color/colorOnSurfaceSecondary"
                             android:textSize="12sp" />
 
                         <com.github.mikephil.charting.charts.LineChart
@@ -383,7 +383,7 @@
                     android:layout_marginBottom="12dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
-                    app:cardBackgroundColor="#FFFFFF">
+                    app:cardBackgroundColor="@color/colorSurface">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -394,8 +394,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Risk Distribution"
-                            android:textColor="#232D42"
+                            android:text="@string/str_risk_distribution"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -403,8 +403,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Latest week breakdown"
-                            android:textColor="#8A92A6"
+                            android:text="@string/str_latest_week_breakdown"
+                            android:textColor="@color/colorOnSurfaceSecondary"
                             android:textSize="12sp" />
 
                         <com.github.mikephil.charting.charts.PieChart
@@ -421,8 +421,8 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginBottom="8dp"
                     android:letterSpacing="0.12"
-                    android:text="AI ASSISTANT"
-                    android:textColor="#8A92A6"
+                    android:text="@string/str_ai_assistant"
+                    android:textColor="@color/colorOnSurfaceSecondary"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -467,7 +467,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Copilot Quick Actions"
+                                    android:text="@string/str_copilot_quick_actions"
                                     android:textColor="@android:color/white"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
@@ -475,7 +475,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Powered by Claude"
+                                    android:text="@string/str_powered_by_claude"
                                     android:textColor="#90A8E0"
                                     android:textSize="11sp" />
                             </LinearLayout>
@@ -488,7 +488,7 @@
                             android:background="@drawable/bg_quick_action"
                             android:gravity="center_vertical"
                             android:paddingHorizontal="16dp"
-                            android:text="Get a Summary"
+                            android:text="@string/str_get_summary"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -501,7 +501,7 @@
                             android:background="@drawable/bg_quick_action"
                             android:gravity="center_vertical"
                             android:paddingHorizontal="16dp"
-                            android:text="Analyze Trends"
+                            android:text="@string/str_analyze_trends"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -514,7 +514,7 @@
                             android:background="@drawable/bg_quick_action"
                             android:gravity="center_vertical"
                             android:paddingHorizontal="16dp"
-                            android:text="Explain Anomalies"
+                            android:text="@string/str_explain_anomalies"
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -532,7 +532,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:text="Add Entry"
+        android:text="@string/str_add_entry"
         android:textColor="@android:color/white"
         app:backgroundTint="#2155D6"
         app:icon="@android:drawable/ic_input_add"

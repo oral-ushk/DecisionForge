@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F3FA">
+    android:background="@color/colorBackground">
 
     <!-- Header -->
     <LinearLayout
@@ -50,7 +50,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="12dp"
                 android:text="APP LANGUAGE"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -61,7 +61,7 @@
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -75,14 +75,14 @@
                         android:layout_height="54dp"
                         android:paddingHorizontal="16dp"
                         android:text="English"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:textSize="15sp"
                         android:button="@null"
                         android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
                         android:gravity="center_vertical" />
 
                     <View android:layout_width="match_parent" android:layout_height="1dp"
-                        android:layout_marginHorizontal="16dp" android:background="#F0F3FA" />
+                        android:layout_marginHorizontal="16dp" android:background="@color/colorBackground" />
 
                     <RadioButton
                         android:id="@+id/rbRussian"
@@ -90,14 +90,14 @@
                         android:layout_height="54dp"
                         android:paddingHorizontal="16dp"
                         android:text="Русский"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:textSize="15sp"
                         android:button="@null"
                         android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
                         android:gravity="center_vertical" />
 
                     <View android:layout_width="match_parent" android:layout_height="1dp"
-                        android:layout_marginHorizontal="16dp" android:background="#F0F3FA" />
+                        android:layout_marginHorizontal="16dp" android:background="@color/colorBackground" />
 
                     <RadioButton
                         android:id="@+id/rbKazakh"
@@ -105,14 +105,14 @@
                         android:layout_height="54dp"
                         android:paddingHorizontal="16dp"
                         android:text="Қазақша"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:textSize="15sp"
                         android:button="@null"
                         android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
                         android:gravity="center_vertical" />
 
                     <View android:layout_width="match_parent" android:layout_height="1dp"
-                        android:layout_marginHorizontal="16dp" android:background="#F0F3FA" />
+                        android:layout_marginHorizontal="16dp" android:background="@color/colorBackground" />
 
                     <RadioButton
                         android:id="@+id/rbDeutsch"
@@ -120,7 +120,7 @@
                         android:layout_height="54dp"
                         android:paddingHorizontal="16dp"
                         android:text="Deutsch"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:textSize="15sp"
                         android:button="@null"
                         android:drawableEnd="?android:attr/listChoiceIndicatorSingle"
@@ -133,7 +133,7 @@
                 android:id="@+id/btnApply"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                android:text="Apply Language"
+                android:text="@string/str_apply_language"
                 android:textAllCaps="false"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -144,3 +144,4 @@
     </ScrollView>
 
 </LinearLayout>
+

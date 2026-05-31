@@ -114,11 +114,13 @@ class AnalyzeFragment : Fragment() {
         chart.xAxis.setDrawGridLines(false)
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
         chart.xAxis.granularity = 1f
-        chart.xAxis.textColor = Color.parseColor("#8A92A6")
+        val textColor = resources.getColor(R.color.colorOnSurfaceSecondary, requireContext().theme)
+        val gridColor = resources.getColor(R.color.colorCardStroke, requireContext().theme)
+        chart.xAxis.textColor = textColor
         chart.xAxis.textSize = 10f
         chart.axisRight.isEnabled = false
-        chart.axisLeft.gridColor = Color.parseColor("#EEEEEE")
-        chart.axisLeft.textColor = Color.parseColor("#8A92A6")
+        chart.axisLeft.gridColor = gridColor
+        chart.axisLeft.textColor = textColor
         chart.axisLeft.textSize = 10f
         chart.setTouchEnabled(true)
         chart.invalidate()
@@ -150,11 +152,13 @@ class AnalyzeFragment : Fragment() {
         chart.xAxis.setDrawGridLines(false)
         chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
         chart.xAxis.granularity = 1f
-        chart.xAxis.textColor = Color.parseColor("#8A92A6")
+        val barTextColor = resources.getColor(R.color.colorOnSurfaceSecondary, requireContext().theme)
+        val barGridColor = resources.getColor(R.color.colorCardStroke, requireContext().theme)
+        chart.xAxis.textColor = barTextColor
         chart.xAxis.textSize = 10f
         chart.axisRight.isEnabled = false
-        chart.axisLeft.gridColor = Color.parseColor("#EEEEEE")
-        chart.axisLeft.textColor = Color.parseColor("#8A92A6")
+        chart.axisLeft.gridColor = barGridColor
+        chart.axisLeft.textColor = barTextColor
         chart.axisLeft.textSize = 10f
         chart.setFitBars(true)
         chart.invalidate()

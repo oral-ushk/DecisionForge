@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Semantic colors — Light mode -->
+    <color name="colorBackground">#F0F3FA</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#232D42</color>
+    <color name="colorOnSurfaceSecondary">#8A92A6</color>
+    <color name="colorChipBackground">#EEF2FF</color>
+    <color name="colorChipStroke">#C7D2FE</color>
+    <color name="colorCardStroke">#EAEAEA</color>
+    <color name="colorChatInput">#F0F2F5</color>
+    <color name="colorChatBubbleAi">#FFFFFF</color>
 </resources>

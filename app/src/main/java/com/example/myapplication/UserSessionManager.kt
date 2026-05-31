@@ -63,6 +63,7 @@ class UserSessionManager(private val context: Context) {
     val roleFlow: Flow<String> = context.sessionDataStore.data.map { it[KEY_ROLE] ?: "" }
 
     fun getThemeSync(): String = runBlocking { themeFlow.first() }
+    fun getLanguageSync(): String = runBlocking { languageFlow.first() }
 
     suspend fun saveUser(session: UserSession) {
         context.sessionDataStore.edit { prefs ->

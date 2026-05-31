@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F3FA">
+    android:background="@color/colorBackground">
 
     <!-- Header -->
     <LinearLayout
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Full Name"
-                        android:textColor="#8A92A6"
+                        android:textColor="@color/colorOnSurfaceSecondary"
                         android:textSize="12sp"
                         android:layout_marginBottom="6dp" />
 
@@ -74,14 +74,14 @@
                         android:inputType="textPersonName"
                         android:hint="Enter your name"
                         android:textSize="15sp"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email Address"
-                        android:textColor="#8A92A6"
+                        android:textColor="@color/colorOnSurfaceSecondary"
                         android:textSize="12sp"
                         android:layout_marginBottom="6dp" />
 
@@ -94,14 +94,14 @@
                         android:inputType="textEmailAddress"
                         android:hint="Enter your email"
                         android:textSize="15sp"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Phone Number"
-                        android:textColor="#8A92A6"
+                        android:textColor="@color/colorOnSurfaceSecondary"
                         android:textSize="12sp"
                         android:layout_marginBottom="6dp" />
 
@@ -114,14 +114,14 @@
                         android:inputType="phone"
                         android:hint="+7 (___) ___-__-__"
                         android:textSize="15sp"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Company"
-                        android:textColor="#8A92A6"
+                        android:textColor="@color/colorOnSurfaceSecondary"
                         android:textSize="12sp"
                         android:layout_marginBottom="6dp" />
 
@@ -134,14 +134,14 @@
                         android:inputType="textCapWords"
                         android:hint="Company name"
                         android:textSize="15sp"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Role / Position"
-                        android:textColor="#8A92A6"
+                        android:textColor="@color/colorOnSurfaceSecondary"
                         android:textSize="12sp"
                         android:layout_marginBottom="6dp" />
 
@@ -154,7 +154,7 @@
                         android:inputType="textCapWords"
                         android:hint="e.g. Product Manager"
                         android:textSize="15sp"
-                        android:textColor="#232D42" />
+                        android:textColor="@color/colorOnSurface" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -175,3 +175,4 @@
     </ScrollView>
 
 </LinearLayout>
+

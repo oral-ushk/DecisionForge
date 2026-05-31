@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F3FA"
+    android:background="@color/colorBackground"
     android:fillViewport="true">
 
     <LinearLayout
@@ -74,7 +74,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="ACCOUNT"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -85,7 +85,7 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                             android:layout_weight="1"
                             android:layout_marginStart="14dp"
                             android:text="Personal Details"
-                            android:textColor="#232D42"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="15sp" />
 
                         <ImageView
@@ -130,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginStart="66dp"
-                        android:background="#F0F3FA" />
+                        android:background="@color/colorBackground" />
 
                     <LinearLayout
                         android:id="@+id/rowLanguage"
@@ -157,7 +157,7 @@
                             android:layout_weight="1"
                             android:layout_marginStart="14dp"
                             android:text="Language &amp; Region"
-                            android:textColor="#232D42"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="15sp" />
 
                         <ImageView
@@ -176,7 +176,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="SECURITY"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -187,7 +187,7 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:id="@+id/rowSecurity"
@@ -219,14 +219,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Password &amp; 2FA"
-                            android:textColor="#232D42"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Manage your security settings"
-                            android:textColor="#8A92A6"
+                            android:textColor="@color/colorOnSurfaceSecondary"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -244,7 +244,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="APPEARANCE"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -255,7 +255,7 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:id="@+id/rowAppearance"
@@ -282,7 +282,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Theme &amp; Appearance"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -299,7 +299,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="NOTIFICATIONS"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -310,7 +310,7 @@
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:id="@+id/rowNotifications"
@@ -336,7 +336,7 @@
                         android:layout_weight="1"
                         android:layout_marginStart="14dp"
                         android:text="Push Notifications"
-                        android:textColor="#232D42"
+                        android:textColor="@color/colorOnSurface"
                         android:textSize="15sp" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
@@ -353,7 +353,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="8dp"
                 android:text="ABOUT"
-                android:textColor="#8A92A6"
+                android:textColor="@color/colorOnSurfaceSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
@@ -364,7 +364,7 @@
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardBackgroundColor="@color/colorSurface">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -394,14 +394,14 @@
                             android:layout_weight="1"
                             android:layout_marginStart="14dp"
                             android:text="App Version"
-                            android:textColor="#232D42"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1.0.0"
-                            android:textColor="#8A92A6"
+                            android:textColor="@color/colorOnSurfaceSecondary"
                             android:textSize="13sp" />
                     </LinearLayout>
 
@@ -409,7 +409,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginStart="66dp"
-                        android:background="#F0F3FA" />
+                        android:background="@color/colorBackground" />
 
                     <LinearLayout
                         android:id="@+id/rowRateApp"
@@ -435,7 +435,7 @@
                             android:layout_weight="1"
                             android:layout_marginStart="14dp"
                             android:text="Rate the App"
-                            android:textColor="#232D42"
+                            android:textColor="@color/colorOnSurface"
                             android:textSize="15sp" />
 
                         <ImageView
@@ -468,3 +468,4 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+

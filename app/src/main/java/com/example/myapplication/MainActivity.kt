@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +37,19 @@ class MainActivity : AppCompatActivity() {
             bottomNav.visibility =
                 if (destination.id in screensWithoutBottomNav) View.GONE else View.VISIBLE
         }
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        val language = UserSessionManager(newBase).getLanguageSync()
+        val locale = when (language) {
+            "ru" -> Locale("ru")
+            "kk" -> Locale("kk")
+            "de" -> Locale("de")
+            else -> Locale("en")
+        }
+        val config = Configuration(newBase.resources.configuration)
+        config.setLocale(locale)
+        super.attachBaseContext(newBase.createConfigurationContext(config))
     }
 
     private fun applyStoredTheme() {
